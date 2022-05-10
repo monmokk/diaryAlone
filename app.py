@@ -46,4 +46,4 @@ def posting():
     return jsonify({'msg':'업로드 완료!'})
 
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=50000,debug=True)
+   app.run('0.0.0.0',port=50400,debug=True)
