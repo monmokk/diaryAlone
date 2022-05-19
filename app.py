@@ -37,6 +37,7 @@ def posting():
         'content': content_receive,
         'time': mytime,
         'file': f'{filename}.{extension}',
+        'idx': db.diary.find_one({'$query':{}, '$orderby':{'idx':-1}})['idx']+1
     }
 
     db.diary.insert_one(doc)
