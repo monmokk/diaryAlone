@@ -7,18 +7,15 @@ import requests
 from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
-
+client = MongoClient('')
 db = client.dbsparta
 
 ## HTML을 주는 부분
 @app.route('/')
 def home():
-   return render_template('index.html')
+    diaries = list(db.diary.find({}, {'_id': False}))
+    return render_template('index.html', diaries=diaries)
 
-@app.route('/listing', methods=['GET'])
-def listing():
-    diaries = list(db.diary.find({},{'_id':False}))
-    return jsonify({'diaries':diaries})
 
 @app.route('/posting', methods=['POST'])
 def posting():
